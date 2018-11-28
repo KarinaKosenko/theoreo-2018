@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.main');
+    return view('index');
 });
+
+Route::get('/action', function () {
+    return view('action');
+});
+
