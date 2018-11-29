@@ -9,7 +9,7 @@
 @endsection
 
 @section ('navigation')
-    @include ('widgets.button_load_more')
+    @include ('widgets.pagination')
 @endsection
 
 @section ('footer')

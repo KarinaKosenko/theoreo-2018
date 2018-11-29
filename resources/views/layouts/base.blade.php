@@ -47,6 +47,8 @@
     @yield ('header')
 
     @yield ('content')
+    
+    @yield ('navigation')
 
     @yield ('footer')
 
