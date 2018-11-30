@@ -1,4 +1,6 @@
-<div class="load-more">
+
+ <div class="row-fluid load-more" style="padding-bottom: 30px; padding-left: 40%;">
+
     <nav aria-label="Page navigation">
         <ul class="pagination">
             <li>
@@ -18,8 +20,8 @@
             </li>
         </ul>
     </nav>
-</div>
 
 </div>
-</div>
-</main>
+
+
+ 

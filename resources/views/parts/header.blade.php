@@ -72,7 +72,7 @@
 
 
                 @section ('search_panel')
-                @include ('widgets.search_panel')
+                    @include ('widgets.search_panel')
                 @show
 
                 <div class="category-list col-xs-4 hidden-xs hidden-sm">
@@ -105,11 +105,9 @@
                     <!-- / Список icon -->
 
                     <!-- Поиск icon -->
-                    <div class="top-icon__item pull-right hidden-sm hidden-md hidden-lg">
-                        <span class="search-form__link link-is-active js-search-show">
-                            <i class="ico ico-search-light"></i>
-                        </span>
-                    </div>
+                    @section ('search_panel_xs_device')
+                        @include ('widgets.search_panel_xs_device')
+                    @show
                     <!-- / Поиск icon -->
                 </div>
 
@@ -174,3 +172,6 @@
         </div>
     </div>
 </header>
+<main class="main" role="main">
+    <div class="wrapper">
+        <div class="container-fluid">

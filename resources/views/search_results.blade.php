@@ -4,6 +4,8 @@
     @include ('parts.header')
 @endsection
 
+@section ('caption', 'Результаты поиска')
+
 @section ('content')
     @include ('parts.actions_list')
 @endsection

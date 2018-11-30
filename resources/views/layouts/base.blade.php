@@ -45,9 +45,11 @@
     </noscript>
 
     @yield ('header')
+    
+    <h2>@yield ('caption')</h2>
 
     @yield ('content')
-    
+        
     @yield ('navigation')
 
     @yield ('footer')
