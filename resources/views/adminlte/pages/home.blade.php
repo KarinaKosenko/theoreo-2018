@@ -12,6 +12,22 @@
             </div>
         </div>
     </div>
+
 </div>
 
-
+  <!-- Main content -->
+<section class="content">
+  <!-- Default box -->
+  <div class="box">
+    <div class="box-header with-border">
+      <h3 class="box-title">Добро пожаловать в панель администрирования!</h3>
+    </div>
+    <div class="box-body">
+      Чтобы начать - выберите нужный пункт в меню слева.
+    </div>
+    <!-- /.box-body -->
+  </div>
+  <!-- /.box -->
+</section>
+<!-- /.content -->
+ 
