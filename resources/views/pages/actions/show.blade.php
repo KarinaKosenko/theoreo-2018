@@ -1,3 +1,7 @@
+@extends ('layouts.main')
+
+@section ('content')
+
 <div class="row-fluid">
     <div class="top-nav clearfix">
         <div class="col-xs-24">
@@ -320,3 +324,9 @@
 </div>
 </div>
 </main>
+
+@endsection
+
+@section ('modal')
+    @include ('parts.modal')
+@endsection

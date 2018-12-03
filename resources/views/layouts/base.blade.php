@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru-RU">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ $title ?? "" }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="kywords" content="">
     <meta name="description" content="">
@@ -45,18 +45,24 @@
     </noscript>
 
     @yield ('header')
-    
+
     <h2>@yield ('caption')</h2>
 
     @yield ('content')
-        
+
     @yield ('navigation')
 
     @yield ('footer')
 
     @yield ('modal')
 
-    @yield ('bottom_scripts')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('jquery-1.11.3.min.js');
+
+    </script>
+    <script src="js/plugins.min.js"></script>
+    <script src="js/main.min.js"></script>
 
 </body>
 

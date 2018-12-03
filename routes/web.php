@@ -12,10 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('pages.actions.index');
 });
 
-Route::get('/action', function () {
-    return view('action');
+Route::get('/show', function () {
+    return view('pages.actions.show');
 });
-

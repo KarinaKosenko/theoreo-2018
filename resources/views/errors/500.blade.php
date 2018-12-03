@@ -1,8 +1,4 @@
-@extends ('layouts.base')
-
-@section ('header')
-    @include ('parts.header')
-@endsection
+@extends ('layouts.main')
 
 @section ('content')
 
@@ -24,25 +20,13 @@
 
     <aside class="sidebar col-xs-24 col-md-9">
         <div class="error__num">
-            404
+            500
         </div>
     </aside>
     <div class="error__text col-xs-24 col-md-15">
-        <h1 class="error__heading">Ошибка! Страница не найдена!</h1>
-        <p>Страницы, которую вы пытаетесь посмотреть тут нет. Может попробуйте что-то еще?</p>
+        <h1 class="error__heading">Ошибка сервера!</h1>
+        <p>На сервере произошла непредвиденная ошибка.</p>
     </div>
 </div>
 
-@endsection
-
-@section ('footer')
-    @include ('parts.footer')
-@endsection
-
-@section ('modal')
-    @include ('widgets.modal')
-@endsection
-
-@section ('bottom_scripts')
-    @include ('parts.bottom_scripts')
 @endsection

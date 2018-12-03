@@ -29,19 +29,7 @@
                 <!-- / LOGO -->
 
                 <!-- Город full -->
-                <div class="col-md-offset-1 col-sm-4 col-lg-5 hidden-xs">
-                    <div class="choice-city anim">
-                        <div class="choice-city__link" data-toggle="modal" data-target="#modal-city-list">
-                            <i class="choice-city__ico pull-left ico ico-point"></i>
-                            <span class="choice-city__item">Саратов</span>
-                        </div>
-                    </div>
-                    <ul class="choice-city__list hidden-xs hidden">
-                        <li class="choice-city__list--item"><a href="" class="choice-city__list--link">Саратов</a></li>
-                        <li class="choice-city__list--item"><a href="" class="choice-city__list--link">Москва</a></li>
-                        <li class="choice-city__list--item"><a href="" class="choice-city__list--link">Кызыл-Юрт</a></li>
-                    </ul>
-                </div>
+                @include ('widgets.city_selection')
                 <!-- / Город full -->
 
                 <div class="box-list">
@@ -84,24 +72,13 @@
                 </div>
 
                 <div class="top-icon__list js-top-icon">
+                   
                     <!-- Город icon -->
-                    <div class="top-icon__item hidden-sm hidden-md hidden-lg pull-right js-search-show">
-                        <div class="choice-city js-box-show" data-box-show="city">
-                            <a role="link" href="/" class="choice-city__link" title="">
-                                <i class="choice-city__ico pull-left ico ico-point"></i>
-                            </a>
-                        </div>
-                    </div>
+                    @include ('widgets.city_selection_xs')
                     <!-- / Город icon -->
 
                     <!-- Список icon -->
-                    <div class="top-icon__item category-list-ico hidden-md hidden-lg anim js-search-hide">
-                        <a role="link" href="" class="search-form__link js-box-show anim" data-box-show="category">
-                            <i class="ico ico-category-light"></i>
-                        </a>
-                    </div>
-
-
+                    @include ('widgets.category_selection_xs')
                     <!-- / Список icon -->
 
                     <!-- Поиск icon -->
@@ -109,6 +86,7 @@
                         @include ('widgets.search_panel_xs_device')
                     @show
                     <!-- / Поиск icon -->
+                    
                 </div>
 
                 <div class="top-icon__close js-box-hide">
@@ -118,57 +96,8 @@
                 </div>
 
             </div>
+          @include ('widgets.category_selection')
 
-            <div class="row-fluid">
-                <div class="box-list">
-                    <div class="category-box col-md-24 anim js-box-list" data-box-list="category">
-                        <nav class="menu anim" role="navigation">
-                            <ul class="list-inline list-unstyled menu__list">
-                                <li class="menu__item">
-                                    <input id="cat1" class="menu__input" type="checkbox">
-                                    <label for="cat1"><i class="ico ico-arrow pull-left"></i>Развлечения</label>
-                                </li>
-                                <li class="menu__item">
-                                    <input id="cat2" class="menu__input" type="checkbox" checked>
-                                    <label for="cat2"><i class="ico ico-arrow pull-left"></i>Кафе/Рестораны</label>
-                                </li>
-                                <li class="menu__item">
-                                    <input id="cat3" class="menu__input" type="checkbox">
-                                    <label for="cat3"><i class="ico ico-arrow pull-left"></i>Одежда</label>
-                                </li>
-                                <li class="menu__item">
-                                    <input id="cat4" class="menu__input" type="checkbox">
-                                    <label for="cat4"><i class="ico ico-arrow pull-left"></i>Авто</label>
-                                </li>
-                                <li class="menu__item">
-                                    <input id="cat5" class="menu__input" type="checkbox">
-                                    <label for="cat5"><i class="ico ico-arrow pull-left"></i>Электроника</label>
-                                </li>
-                                <li class="menu__item">
-                                    <input id="cat6" class="menu__input" type="checkbox">
-                                    <label for="cat6"><i class="ico ico-arrow pull-left"></i>Здоровье</label>
-                                </li>
-                                <li class="menu__item">
-                                    <input id="cat7" class="menu__input" type="checkbox">
-                                    <label for="cat7"><i class="ico ico-arrow pull-left"></i>Для дома</label>
-                                </li>
-                                <li class="menu__item">
-                                    <input id="cat8" class="menu__input" type="checkbox">
-                                    <label for="cat8"><i class="ico ico-arrow pull-left"></i>Строительство</label>
-                                </li>
-                                <li class="menu__item">
-                                    <input id="cat9" class="menu__input" type="checkbox">
-                                    <label for="cat9"><i class="ico ico-arrow pull-left"></i>Услуги</label>
-                                </li>
-                                <li class="menu__item">
-                                    <input id="cat10" class="menu__input" type="checkbox">
-                                    <label for="cat10"><i class="ico ico-arrow pull-left"></i>Туризм</label>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </header>

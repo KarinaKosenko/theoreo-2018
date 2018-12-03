@@ -1,3 +1,9 @@
+@extends ('layouts.main')
+
+@section ('caption', 'Результаты поиска')
+
+@section ('content')
+
 <div class="row-fluid">
     <div class="top-nav clearfix">
         <div class="col-xs-24">
@@ -39,7 +45,7 @@
         </div>
 
         <div class="col-xs-24 col-sm-6">
-            <a role="link" href="/action" class="content-block__heading">
+            <a role="link" href="/show" class="content-block__heading">
                 <h2>Скидка 20% на все средства по уходу за волосами Gliss Kur</h2>
             </a>
             <p class="content-block__introtext">На средства по уходу за волосами Gliss Kur действует скидка 20%. Воспользуйтесь шансом совершить приятные покупки по выгодным ценам. Скидка предоставляется с цены покупаемой продукции под товарным знаком Gliss Kur (вся линейка). Подробности предложения уточняйте в местах продаж. Предложение действительно при наличии товара в магазине. Количество товара ограничено.</p>
@@ -259,3 +265,13 @@
         </div>
     </article>
 </div>
+
+@endsection
+
+@section ('navigation')
+    @include ('widgets.pagination')
+@endsection
+
+@section ('modal')
+    @include ('parts.modal')
+@endsection
