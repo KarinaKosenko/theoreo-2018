@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('vk')->group(function () {
+    Route::get('auth', 'ParseController@vkAuthorize');
+    Route::get('token', 'ParseController@saveToken');
+    Route::get('get-wall', 'ParseController@getWall');
+
+});
