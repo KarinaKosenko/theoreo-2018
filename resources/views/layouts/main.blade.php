@@ -1,3 +1,9 @@
 @extends ('layouts.base')
 
-    @include ('layouts.index')
+@section ('header')
+    @include ('parts.header')
+@endsection
+
+@section ('footer')
+    @include ('parts.footer')
+@endsection
