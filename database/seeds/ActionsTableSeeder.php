@@ -20,7 +20,7 @@ class ActionsTableSeeder extends Seeder
 	            'active_from' => '01.12.2018',
 	            'active_to' => '31.12.2018', 
 	            'text' => 'women shoes special price',
-	            'uploads_id' => '1',
+	            'upload_id' => '1',
 	            'status' =>'1',
 	            'links'=> 'shoes.com',
 	            'type'=> 'sale'
@@ -33,7 +33,7 @@ class ActionsTableSeeder extends Seeder
 	            'active_from' => now(),
 	            'active_to' => '15.01.2019',
 	            'text' => 'notebook 30% cheaper',
-	            'uploads_id' => '2',
+	            'upload_id' => '2',
 	            'status' =>'1',
 	            'links'=> 'notebooks.com',
 	            'type'=> 'sale'
