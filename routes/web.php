@@ -17,11 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/show', function () {
     return view('pages.actions.show');
 });
 
 Route::prefix('vk')->group(function () {
     Route::get('get-wall', 'ParseController@getWall');
-
 });
