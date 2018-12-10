@@ -17,15 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/show', function () {
     return view('pages.actions.show');
 });
 
 Route::prefix('vk')->group(function () {
-    Route::get('auth', 'ParseController@vkAuthorize');
-    Route::get('token', 'ParseController@saveToken');
     Route::get('get-wall', 'ParseController@getWall');
 
 });
