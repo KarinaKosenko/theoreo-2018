@@ -18,6 +18,7 @@ class CreateParserActionsAttachmentsTable extends Migration
             $table->integer('action_id');
             $table->string('type', 50);
             $table->string('url', 250);
+            $table->longText('text')->nullable();
             $table->timestamps();
         });
     }

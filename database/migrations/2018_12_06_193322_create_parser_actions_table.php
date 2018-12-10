@@ -18,8 +18,8 @@ class CreateParserActionsTable extends Migration
             $table->integer('ext_id');
             $table->integer('source_id');
             $table->timestamp('date')->nullable();
-            $table->string('name', 200);
-            $table->string('text');
+            $table->string('name', 200)->nullable();
+            $table->longText('text');
             $table->enum('status', ['Ожидает модерации', 'Принята', 'Отклонена']);
             $table->timestamps();
         });

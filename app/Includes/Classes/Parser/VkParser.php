@@ -4,19 +4,16 @@ namespace App\Includes\Classes\Parser;
 
 use ATehnix\VkClient\Auth,
     ATehnix\VkClient\Client,
-    ATehnix\VkClient\Requests\Request as vkRequest,
-    App\Models\Parser\ParserRun,
-    App\Models\Parser\ParserSearchPhrase,
-    App\Models\Parser\ParserStopPhrase,
-    App\Models\Parser\ParserAction,
-    App\Models\Parser\ParserActionsAttachment;
+    ATehnix\VkClient\Requests\Request as vkRequest;
 
 class VkParser extends Parser
 {
-    public function getData($StartTime = null)
+    protected $lastParseActionCount = 0;
+
+    protected function getData($startTime = null)
     {
         $params = [];
-        if ($StartTime) $params['start_time'] = $StartTime;
+        if ($startTime) $params['start_time'] = $startTime;
 
         $api = new Client;
         $api->setDefaultToken($this->getParam('access_token'));
@@ -25,15 +22,25 @@ class VkParser extends Parser
         $this->data = $response;
     }
 
-    public function execute()
+    protected function getPhotoUrl($arPhoto = [])
     {
-        $lastRun = ParserRun::latest()->value('parse_time');
+        foreach (array_reverse($arPhoto) as $photoKey => $photoVal) {
+            if (mb_stripos($photoKey, 'photo') !== false) return $photoVal;
+        }
+    }
 
-        $this->setStopPhrases(ParserStopPhrase::all()->values());
+    public function lastActionsCount()
+    {
+        return $this->lastParseActionCount;
+    }
 
-        $this->setSearchPhrases(ParserSearchPhrase::all()->values());
+    public function execute($lastRun = null)
+    {
+        $arActions = [];
 
         $this->getData(strtotime($lastRun));
+
+        $this->lastParseActionCount = count($this->data['response']['items']);
 
         foreach ($this->data['response']['items'] as $post) {
             if (isset($post['text']) && $post['type'] = 'post') {
@@ -41,22 +48,42 @@ class VkParser extends Parser
 
                 if ($this->checkSearchPhrases($post['text'])) {
 
-                    $arParams = [
+                    $arActions[$post['post_id']] = [
                         'ext_id' => $post['post_id'],
                         'source_id' => $post['source_id'],
-                        'date' =>  date('Y-m-d H:i:s', strtotime($post['date'])),
+                        'date' => date('Y-m-d H:i:s', $post['date']),
                         'text' => $post['text'],
                         'status' => 'Ожидает модерации'
                     ];
 
-                    $parserAction = new ParserAction($arParams);
+                    if (isset($post['attachments'])) {
+                        $arAttschments = [];
+                        foreach ($post['attachments'] as $attachmentKey => $attachment) {
+                            switch ($attachment['type']) {
+                                case 'link':
+                                    $arAttschments[$attachmentKey] = [
+                                        'type' => $attachment['type'],
+                                        'url' => $attachment['link']['url'] ?? '',
+                                        'text' => $attachment['link']['title'] ?? ''
+                                    ];
+                                    break;
+                                case 'photo':
+                                    $arAttschments[$attachmentKey] = [
+                                        'type' => $attachment['type'],
+                                        'url' => $this->getPhotoUrl($attachment['photo']) ?? '',
+                                        'text' => $attachment['photo']['text'] ?? ''
+                                    ];
+                                    break;
+                            }
+                        }
 
-                    /* Блок с добавлением приложений */
+                        $arActions[$post['post_id']]['attachments'] = $arAttschments;
+                    }
                 }
             }
         }
 
-        return $this->data;
+        return $arActions;
     }
 
 }

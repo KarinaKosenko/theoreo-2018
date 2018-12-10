@@ -2,9 +2,7 @@
 
 namespace App\Models\Parser;
 
-use Illuminate\Database\Eloquent\Model;
-
-class ParserStopPhrase extends Model
+class ParserStopPhrase extends Phrase
 {
-    //
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 }

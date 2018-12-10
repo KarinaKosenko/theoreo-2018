@@ -25,7 +25,7 @@ abstract class Parser
     /*
      * Get data from source
      */
-    abstract function getData();
+    abstract protected function getData();
 
     /*
      * Set stop phrases fo parser
@@ -35,6 +35,7 @@ abstract class Parser
         if (($phrases)) {
             $this->stopPhases = $phrases;
         }
+        return $this;
     }
 
     /*
@@ -45,6 +46,7 @@ abstract class Parser
         if (($phrases)) {
             $this->searchPhases = $phrases;
         }
+        return $this;
     }
 
     /*
@@ -53,7 +55,7 @@ abstract class Parser
     public function checkStopPhrases($text = '')
     {
         foreach ($this->stopPhases as $phase) {
-            if (strpos($text, $phase->value)) return true;
+            if (mb_stripos($text, $phase) !== false) return true;
         }
         return false;
     }
@@ -64,8 +66,7 @@ abstract class Parser
     public function checkSearchPhrases($text = '')
     {
         foreach ($this->searchPhases as $phase) {
-
-            if (strpos($text, $phase->value)) return true;
+            if (mb_stripos($text, $phase) !== false) return true;
         }
         return false;
     }

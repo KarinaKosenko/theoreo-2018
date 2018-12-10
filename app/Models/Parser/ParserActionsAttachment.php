@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ParserActionsAttachment extends Model
 {
-    public function ParserAction()
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function parserAction()
     {
         return $this->belongsTo('App\Models\Parser\ParserAction');
     }
