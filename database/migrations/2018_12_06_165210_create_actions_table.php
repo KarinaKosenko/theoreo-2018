@@ -22,8 +22,8 @@ class CreateActionsTable extends Migration
             ->unsigned();
             $table->timestamp('active_from')->nullable();
             $table->timestamp('active_to')->nullable();
-            $table->string('text');
-            $table->bigInteger('uploads_id')
+            $table->text('text');
+            $table->bigInteger('upload_id')
             ->unsigned();
             $table->unsignedTinyInteger('status');
             $table->string('links');
