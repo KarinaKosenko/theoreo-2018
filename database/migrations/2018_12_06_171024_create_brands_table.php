@@ -17,10 +17,9 @@ class CreateBrandsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->bigInteger('city_id')->unsigned();
-            $table->string('address');
+            $table->text('address');
             $table->string('phone');
-            $table->bigInteger('category_id')->unsigned();
-            $table->bigInteger('uploads_id')->unsigned();
+            $table->bigInteger('upload_id')->unsigned();
             $table->string('links');
         });
     }
