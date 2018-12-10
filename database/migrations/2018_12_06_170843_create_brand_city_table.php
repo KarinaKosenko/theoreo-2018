@@ -17,6 +17,7 @@ class CreateBrandCityTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('brand_id')->unsigned();
             $table->bigInteger('city_id')->unsigned();
+        });
     }
 
     /**
