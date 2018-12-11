@@ -25,7 +25,11 @@ class CreateBrandCityTable extends Migration
             $table->foreign('FK_brand_city_cities_id')->references('id')->on('cities');
             $table->timestamps('created_at');
             $table->timestamps('updated_at');
-            
+    
+        
+
+        });
+
         Schema::enableForeignKeyConstraints();
     }
 
