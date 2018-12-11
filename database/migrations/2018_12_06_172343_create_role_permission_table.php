@@ -13,11 +13,21 @@ class CreateRolePermissionTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::create('role_permission', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('role_id')->unsigned();
             $table->bigInteger('permission_id')->unsigned();
+            $table->bigInteger('FK_role_permission_roles_id')->unsigned();
+            $table->foreign('FK_role_permission_roles_id')->references('id')->on('roles');
+            $table->bigInteger('FK_role_permission_permissions_id')->unsigned();
+            $table->foreign('FK_role_permission_permissions_id')->references('id')->on('permissions');
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
         });
+        
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -27,6 +37,10 @@ class CreateRolePermissionTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('role_permission');
+        
+        Schema::enableForeignKeyConstraints();
     }
 }

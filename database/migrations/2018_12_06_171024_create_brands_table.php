@@ -13,6 +13,8 @@ class CreateBrandsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::create('brands', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -21,7 +23,15 @@ class CreateBrandsTable extends Migration
             $table->string('phone');
             $table->bigInteger('upload_id')->unsigned();
             $table->string('links');
+            $table->bigInteger('FK_brands_cities_id')->unsigned();
+            $table->foreign('FK_brands_cities_id')->references('id')->on('cities');
+            $table->bigInteger('FK_brands_uploads_id')->unsigned();
+            $table->foreign('FK_brands_uploads_id')->references('id')->on('uploads');
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
         });
+        
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -31,6 +41,10 @@ class CreateBrandsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('brands');
+        
+        Schema::enableForeignKeyConstraints();
     }
 }

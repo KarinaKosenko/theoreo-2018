@@ -13,14 +13,23 @@ class CreateActionTagTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::create('action_tag', function (Blueprint $table) {
             
             $table->bigIncrements('id');
             $table->bigInteger('action_id')->unsigned();
             $table->bigInteger('tag_id')->unsigned();
-           
+            $table->bigInteger('FK_action_tag_tags_id')->unsigned();
+            $table->foreign('FK_action_tag_tags_id')->references('id')->on('tags');
+            $table->bigInteger('FK_action_tag_actions_id')->unsigned();
+            $table->foreign('FK_action_tag_actions_id')->references('id')->on('actions');
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
 
         });
+        
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -30,6 +39,10 @@ class CreateActionTagTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('action_tag');
+        
+        Schema::enableForeignKeyConstraints();
     }
 }

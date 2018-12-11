@@ -13,11 +13,21 @@ class CreateActionsCategoriesTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::create('action_category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('action_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('FK_action_category_categories_id')->unsigned();
+            $table->foreign('FK_action_category_categories_id')->references('id')->on('categories');
+            $table->bigInteger('FK_action_category_actions_id')->unsigned();
+            $table->foreign('FK_action_category_actions_id')->references('id')->on('actions');
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
         });
+        
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -27,6 +37,10 @@ class CreateActionsCategoriesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('action_category');
+        
+        Schema::enableForeignKeyConstraints();
     }
 }

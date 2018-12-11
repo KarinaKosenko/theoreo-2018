@@ -17,6 +17,8 @@ class CreateMenuTable extends Migration
             $table->increments('id');
             $table->bigInteger('parent_id')->unsigned();
             $table->string('code');
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
         });
     }
 

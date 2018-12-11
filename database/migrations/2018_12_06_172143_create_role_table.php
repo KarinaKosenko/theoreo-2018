@@ -17,6 +17,8 @@ class CreateRoleTable extends Migration
            $table->bigIncrements('id');
            $table->string('caption');
            $table->string('code');
+           $table->timestamps('created_at');
+           $table->timestamps('updated_at');
         });
     }
 

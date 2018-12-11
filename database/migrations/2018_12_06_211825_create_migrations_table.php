@@ -17,6 +17,8 @@ class CreateMigrationsTable extends Migration
             $table->increments('id');
             $table->integer('batch');
             $table->string('migration');
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
         });
     }
 
