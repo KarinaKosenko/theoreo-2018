@@ -17,14 +17,16 @@ class RolesTableSeeder extends Seeder
                 'caption' => 'admin',
                 'code' => 'primary'
         	],
-        	[
-            	'caption' => 'user',
-                'code' => 'simple'	
-        	],
+        	
         	[
             	'caption' => 'manager',
-                'code' => 'simple'	
-        	]
+                'code' => 'secondary'	
+        	],
+
+            [
+                'caption' => 'user',
+                'code' => 'simple'  
+            ]
 
         ]);
     }

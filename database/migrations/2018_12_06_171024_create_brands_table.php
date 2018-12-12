@@ -19,11 +19,11 @@ class CreateBrandsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('city_id')->unsigned();
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
             $table->text('address');
             $table->string('phone');
             $table->bigInteger('upload_id')->unsigned();
-            $table->foreign('upload_id')->references('id')->on('uploads')->onDelete('cascade');
+            $table->foreign('upload_id')->references('id')->on('uploads')->onDelete('cascade')->onUpdate('cascade');
             $table->string('links');
             $table->timestamps();
         });

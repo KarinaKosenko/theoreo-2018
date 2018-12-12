@@ -13,18 +13,20 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UsersTableSeeder::class, 
-            RolesTableSeeder::class, 
+            RolesTableSeeder::class,
+            UserRoleTableSeeder::class,
+            PermissionsTableSeeder::class,
+            RolePermissionTableSeeder::class,
+            UploadsTableSeeder::class,
+            CitiesTableSeeder::class,
+            CategoriesTableSeeder::class,
+            TagsTableSeeder::class,
             BrandsTableSeeder::class, 
-            CategoriesTableSeeder::class, 
-            CitiesTableSeeder::class, 
+            BrandCityTableSeeder::class,
             MenuTableSeeder::class, 
-            PermissionsTableSeeder::class, 
-            TagsTableSeeder::class, 
             ActionsTableSeeder::class, 
             ActionTagTableSeeder::class, 
-            ActionsCategoriesTableSeeder::class, 
-            BrandCityTableSeeder::class, 
-            RolePermissionTableSeeder::class
+            ActionCategoryTableSeeder::class 
         ]);
     }
 }

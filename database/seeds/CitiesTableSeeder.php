@@ -11,12 +11,9 @@ class CitiesTableSeeder extends Seeder
      */
     public function run()
     {
-       factory(App\City::class, 3)->create()->make();
-
         DB::table('cities')->insert([
         	[
         		'name' => 'Москва',
-        		
         	],
 
         	[
@@ -36,5 +33,7 @@ class CitiesTableSeeder extends Seeder
         	]
 
         ]);
+
+        factory(App\City::class, 3)->create()->make();
     }
 }

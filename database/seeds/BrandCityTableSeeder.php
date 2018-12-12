@@ -20,8 +20,27 @@ class BrandCityTableSeeder extends Seeder
         	[
         		'brand_id' => '2',
         		'city_id' => '2'
-        	]
+        	],
 
+            [
+                'brand_id' => '3',
+                'city_id' => '3'
+            ],
+
+            [
+                'brand_id' => '4',
+                'city_id' => '4'
+            ],
+
+            [
+                'brand_id' => '5',
+                'city_id' => '5'
+            ],
+
+            [
+                'brand_id' => '6',
+                'city_id' => '6'
+            ]
         ]);
     }
 }

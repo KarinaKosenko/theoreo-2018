@@ -19,7 +19,7 @@ class ActionTagTableSeeder extends Seeder
 
         	[
 	            'action_id' => '2',
-	            'tag_id' => '2'
+	            'tag_id' => '4'
         	]
         ]);
     }

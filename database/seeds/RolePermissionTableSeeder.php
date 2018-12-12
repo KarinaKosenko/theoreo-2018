@@ -13,18 +13,18 @@ class RolePermissionTableSeeder extends Seeder
     {
        DB::table('role_permission')->insert([
        		[
-       			'role_id' => '2', // админ
+       			'role_id' => '1', // админ
+       			'permission_id' => '1'
+       		],
+
+       		[
+       			'role_id' => '2', // manager
        			'permission_id' => '1'
        		],
 
        		[
        			'role_id' => '3', // user
        			'permission_id' => '2'
-       		],
-
-       		[
-       			'role_id' => '6', // manager
-       			'permission_id' => '1'
        		]
        ]);
     }
