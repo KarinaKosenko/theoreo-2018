@@ -19,14 +19,14 @@ class CreateActionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('brand_id')->unsigned();
-            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->bigInteger('city_id')->unsigned();
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->timestamp('active_from')->nullable();
             $table->timestamp('active_to')->nullable();
             $table->text('text');
             $table->bigInteger('upload_id')->unsigned();
-            $table->foreign('upload_id')->references('id')->on('uploads');
+            $table->foreign('upload_id')->references('id')->on('uploads')->onDelete('cascade');
             $table->enum('status', ['new', 'rejected', 'approved', 'paid']);
             $table->string('links');
             $table->enum('type', ['stock', 'discount']);
@@ -45,7 +45,7 @@ class CreateActionsTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        
+                
         Schema::dropIfExists('actions');
         
         Schema::enableForeignKeyConstraints();

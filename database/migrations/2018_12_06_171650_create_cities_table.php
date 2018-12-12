@@ -27,6 +27,16 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        
+        Schema::table('brand_city', function (Blueprint $table) {
+            
+            $table->dropForeign(['city_id']);           
+        
+        });
+        
         Schema::dropIfExists('cities');
+        
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -19,11 +19,11 @@ class CreateBrandsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('city_id')->unsigned();
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->text('address');
             $table->string('phone');
             $table->bigInteger('upload_id')->unsigned();
-            $table->foreign('upload_id')->references('id')->on('uploads');
+            $table->foreign('upload_id')->references('id')->on('uploads')->onDelete('cascade');
             $table->string('links');
             $table->timestamps();
         });
@@ -40,8 +40,20 @@ class CreateBrandsTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         
-        Schema::dropIfExists('brands');
+        Schema::table('brand_city', function (Blueprint $table) {
+            
+            $table->dropForeign(['brand_id']);
+                    
+        });
         
+        Schema::table('actions', function (Blueprint $table) {
+            
+            $table->dropForeign(['brand_id']);
+                    
+        });
+        
+        Schema::dropIfExists('brands');
+                
         Schema::enableForeignKeyConstraints();
     }
 }

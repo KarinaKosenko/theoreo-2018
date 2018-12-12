@@ -18,9 +18,9 @@ class CreateBrandCityTable extends Migration
         Schema::create('brand_city', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('brand_id')->unsigned();
-            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->bigInteger('city_id')->unsigned();
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->timestamps();
     
         
@@ -40,7 +40,7 @@ class CreateBrandCityTable extends Migration
         Schema::disableForeignKeyConstraints();
         
         Schema::dropIfExists('brand_city');
-        
+            
         Schema::enableForeignKeyConstraints();
     }
 }

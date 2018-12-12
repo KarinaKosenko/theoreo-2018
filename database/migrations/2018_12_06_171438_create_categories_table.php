@@ -27,6 +27,16 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        
+        Schema::table('action_category', function (Blueprint $table) {
+            
+            $table->dropForeign(['category_id']);           
+        
+        });
+        
         Schema::dropIfExists('categories');
+        
+        Schema::enableForeignKeyConstraints();
     }
 }

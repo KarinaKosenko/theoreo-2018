@@ -30,6 +30,16 @@ class CreateUploadsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        
+        Schema::table('brands', function (Blueprint $table) {
+            
+            $table->dropForeign(['upload_id']);
+            
+        });
+        
         Schema::dropIfExists('uploads');
+        
+        Schema::enableForeignKeyConstraints();
     }
 }

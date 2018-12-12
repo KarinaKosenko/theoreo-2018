@@ -27,6 +27,17 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
+        
+        Schema::disableForeignKeyConstraints();
+        
+        Schema::table('action_tag', function (Blueprint $table) {
+            
+            $table->dropForeign(['tag_id']);
+            
+        });
+        
         Schema::dropIfExists('tags');
+        
+        Schema::enableForeignKeyConstraints();
     }
 }

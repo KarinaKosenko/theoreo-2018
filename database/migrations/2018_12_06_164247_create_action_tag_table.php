@@ -19,9 +19,9 @@ class CreateActionTagTable extends Migration
             
             $table->bigIncrements('id');
             $table->bigInteger('action_id')->unsigned();
-            $table->foreign('action_id')->references('id')->on('actions');
+            $table->foreign('action_id')->references('id')->on('actions')->onDelete('cascade');
             $table->bigInteger('tag_id')->unsigned();
-            $table->foreign('tag_id')->references('id')->on('tags');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
             $table->timestamps();
 
         });
