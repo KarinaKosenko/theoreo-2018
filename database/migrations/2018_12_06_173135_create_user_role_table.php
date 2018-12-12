@@ -18,13 +18,10 @@ class CreateUserRoleTable extends Migration
         Schema::create('user_role', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->bigInteger('role_id')->unsigned();
-            $table->bigInteger('FK_user_role_roles_id')->unsigned();
-            $table->foreign('FK_user_role_roles_id')->references('id')->on('roles');
-            $table->bigInteger('FK_user_role_users_id')->unsigned();
-            $table->foreign('FK_user_role_users_id')->references('id')->on('users');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->foreign('role_id')->references('id')->on('roles');
+            $table->timestamps();
         });
         
         Schema::enableForeignKeyConstraints();

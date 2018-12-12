@@ -18,13 +18,10 @@ class CreateBrandCityTable extends Migration
         Schema::create('brand_city', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('brand_id')->unsigned();
+            $table->foreign('brand_id')->references('id')->on('brands');
             $table->bigInteger('city_id')->unsigned();
-            $table->bigInteger('FK_brand_city_brands_id')->unsigned();
-            $table->foreign('FK_brand_city_brands_id')->references('id')->on('brands');
-            $table->bigInteger('FK_brand_city_cities_id')->unsigned();
-            $table->foreign('FK_brand_city_cities_id')->references('id')->on('cities');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->timestamps();
     
         
 

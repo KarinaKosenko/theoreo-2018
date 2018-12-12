@@ -14,11 +14,10 @@ class CreateMigrationsTable extends Migration
     public function up()
     {
         Schema::create('migrations', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->integer('batch');
             $table->string('migration');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->timestamps();
         });
     }
 

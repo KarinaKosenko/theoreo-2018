@@ -19,8 +19,7 @@ class CreateUploadsTable extends Migration
             $table->string('ext');
             $table->float ('size');
             $table->string('old_name');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->timestamps();
         });
     }
 

@@ -18,13 +18,10 @@ class CreateActionsCategoriesTable extends Migration
         Schema::create('action_category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('action_id')->unsigned();
+            $table->foreign('action_id')->references('id')->on('actions');
             $table->bigInteger('category_id')->unsigned();
-            $table->bigInteger('FK_action_category_categories_id')->unsigned();
-            $table->foreign('FK_action_category_categories_id')->references('id')->on('categories');
-            $table->bigInteger('FK_action_category_actions_id')->unsigned();
-            $table->foreign('FK_action_category_actions_id')->references('id')->on('actions');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->timestamps();
         });
         
         Schema::enableForeignKeyConstraints();
