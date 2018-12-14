@@ -31,6 +31,6 @@ class UsersTableSeeder extends Seeder
             ]
         ]);
 
-        factory(App\User::class, 3)->create()->make(); // users без привилегий
+        factory(App\Models\User::class, 3)->create()->make(); // users без привилегий
     }
 }

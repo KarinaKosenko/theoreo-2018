@@ -34,6 +34,6 @@ class CitiesTableSeeder extends Seeder
 
         ]);
 
-        factory(App\City::class, 3)->create()->make();
+        factory(App\Models\City::class, 3)->create()->make();
     }
 }
