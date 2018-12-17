@@ -11,11 +11,11 @@ class City extends Model
     
     public function brands()
     {
-        return $this->belongsToMany('Brand');
+        return $this->belongsToMany('App\Models\Brand');
     }
     
     public function actions()
     {
-        return $this->belongsTo('Action');
+        return $this->hasMany('App\Models\Action');
     }
 }

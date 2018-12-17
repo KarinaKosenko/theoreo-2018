@@ -11,11 +11,11 @@ class Upload extends Model
     
     public function actions()
     {
-        return $this->belongsTo('Action');
+        return $this->hasOne('App\Models\Action');
     }
     
     public function brands()
     {
-        return $this->belongsTo('Brand');
+        return $this->hasOne('App\Models\Brand');
     }
 }

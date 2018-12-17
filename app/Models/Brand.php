@@ -11,11 +11,11 @@ class Brand extends Model
     
     public function uploads()
     {
-        return $this->hasMany('Uploads');
+        return $this->belongsTo('App\Models\Upload');
     }
     
     public function cities()
     {
-        return $this->belongsToMany('Cities');
+        return $this->belongsToMany('App\Models\City');
     }
 }

@@ -11,21 +11,21 @@ class Action extends Model
     
     public function categories()
     {
-        return $this->belongsToMany('Category');
+        return $this->belongsToMany('App\Models\Category');
     }
     
     public function tags()
     {
-        return $this->belongsToMany('Tags');
+        return $this->belongsToMany('App\Models\Tag');
     }
     
     public function uploads()
     {
-        return $this->hasMany('Upload');
+        return $this->belongsTo('App\Models\Upload');
     }
     
     public function cities()
     {
-        return $this->hasOne('City');
+        return $this->belongsTo('App\Models\City');
     }
 }

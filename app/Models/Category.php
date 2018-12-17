@@ -11,6 +11,6 @@ class Category extends Model
     
     public function actions()
     {
-        return $this->belongsToMany('Action');
+        return $this->belongsToMany('App\Models\Action');
     }
 }
