@@ -15,7 +15,7 @@ class CreateParserActionsAttachmentsTable extends Migration
     {
         Schema::create('parser_actions_attachments', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('action_id');
+            $table->integer('parser_action_id');
             $table->string('type', 50);
             $table->string('url', 250);
             $table->longText('text')->nullable();
