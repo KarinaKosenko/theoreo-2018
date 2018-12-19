@@ -25,4 +25,5 @@ Route::get('/show', function () {
 
 Route::prefix('vk')->group(function () {
     Route::get('get-wall', 'ParseController@getWall');
+    Route::get('actions', 'ParseController@actions');
 });

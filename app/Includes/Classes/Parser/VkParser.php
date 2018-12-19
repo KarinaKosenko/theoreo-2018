@@ -43,7 +43,7 @@ class VkParser extends Parser
         $this->lastParseActionCount = count($this->data['response']['items']);
 
         foreach ($this->data['response']['items'] as $post) {
-            if (isset($post['text']) && $post['type'] = 'post') {
+            if (isset($post['text']) && $post['type'] == 'post') {
                 if ($this->checkStopPhrases($post['text'])) continue;
 
                 if ($this->checkSearchPhrases($post['text'])) {
@@ -84,6 +84,16 @@ class VkParser extends Parser
         }
 
         return $arActions;
+    }
+
+    public function getAuthToken($redirectUri = '/'){
+        $auth = new Auth($this->getParam('client_id'), $this->getParam('client_secret'), 'redirect_uri');
+
+        echo "<a href='{$auth->getUrl()}'>ClickMe<a>";
+
+        // ...
+
+        $token = $auth->getToken($_GET['code']);
     }
 
 }

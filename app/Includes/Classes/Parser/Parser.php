@@ -32,7 +32,7 @@ abstract class Parser
      */
     public function setStopPhrases($phrases = [])
     {
-        if (($phrases)) {
+        if ($phrases) {
             $this->stopPhases = $phrases;
         }
         return $this;
@@ -43,7 +43,7 @@ abstract class Parser
      */
     public function setSearchPhrases($phrases = [])
     {
-        if (($phrases)) {
+        if ($phrases) {
             $this->searchPhases = $phrases;
         }
         return $this;
