@@ -26,6 +26,17 @@
         </div>
     </div>
 </div>
+
+<?php
+
+   foreach ($actions as $action) {
+    $brand = DB::table('brands')->where('id', $action->brand_id)->value('name');
+?>
+         
+         
+    
+
+
 <div class="row-fluid">
     <article role="article" class="content-block clearfix">
 
@@ -38,21 +49,24 @@
                 </a>
             </div>
             <div class="sidebar__item">
-                <strong>Магазин «Рубль Бум»</strong>
+                <strong><?php echo $brand; ?></strong>
             </div>
         </div>
 
         <div class="col-xs-24 col-sm-6">
             <a role="link" href="/show" class="content-block__heading">
-                <h2>Скидка 20% на все средства по уходу за волосами Gliss Kur</h2>
+                <h2><?php echo $action->name; ?></h2>
             </a>
-            <p class="content-block__introtext">На средства по уходу за волосами Gliss Kur действует скидка 20%. Воспользуйтесь шансом совершить приятные покупки по выгодным ценам. Скидка предоставляется с цены покупаемой продукции под товарным знаком Gliss Kur (вся линейка). Подробности предложения уточняйте в местах продаж. Предложение действительно при наличии товара в магазине. Количество товара ограничено.</p>
-            <p class="content-block__date">Срок проведения: 13.05.2015-04.06.2015</p>
+            <p class="content-block__introtext"><?php echo $action->text; ?></p>
+            <p class="content-block__date">Срок проведения: <?php echo $action->active_from; ?>-<?php echo $action->active_to; ?></p>
             <ul class="content-block__list list-unstyled list-inline hidden-xs">
-                <li class="content-block__item"><a href="" class="btn btn-default content-block__tag">Акция</a></li>
-                <li class="content-block__item"><a href="" class="btn btn-default content-block__tag">Новинки</a></li>
-                <li class="content-block__item"><a href="" class="btn btn-default content-block__tag">Gliss Kur</a></li>
-                <li class="content-block__item"><a href="" class="btn btn-default content-block__tag">Рубль Бум</a></li>
+                <?php
+                    foreach ($action_tag as $action_tag_item) {
+                        if ($action_tag_item->action_id == $action->id)
+                        {
+                        $tag_name = DB::table('tags')->where('id', $action_tag_item->tag_id)->value('name');
+                ?>
+                    <li class="content-block__item"><a href="" class="btn btn-default content-block__tag"><?php echo $tag_name; }?></a></li><?php } ?>
             </ul>
             <div class="content-block__footer clearfix">
                 <div class="content-block__tag--wrapper pull-left">
@@ -87,7 +101,12 @@
                 </div>
             </div>
         </div>
-
+    </article>
+</div>
+<?php
+}
+?>
+<!--
 
         <div class="sidebar col-xs-24 col-sm-6">
             <div class="sidebar__item">
@@ -263,6 +282,7 @@
         </div>
     </article>
 </div>
+-->
 
 @endsection
 
