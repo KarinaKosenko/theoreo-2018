@@ -9,9 +9,9 @@ class ActionsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+	public function run()
     {
-        DB::table('actions')->insert([
+	    DB::table('actions')->insert([
 
            [
 	            'name' => 'shoes',

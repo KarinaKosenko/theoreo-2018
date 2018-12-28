@@ -18,7 +18,9 @@ class IndexController extends Controller
 
         $brands = DB::table('brands')->get();
 
-        return view('pages.actions.index', ['actions' => $actions, 'action_tag' => $action_tag, 'tags' => $tags, 'brands' => $brands]);
+        $categories = DB::table('categories')->get();
+
+        return view('pages.actions.index', ['actions' => $actions, 'action_tag' => $action_tag, 'tags' => $tags, 'brands' => $brands, 'categories' => $categories]);
 
     }
 }

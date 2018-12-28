@@ -3,10 +3,19 @@
         <div class="category-box col-md-24 anim js-box-list" data-box-list="category">
             <nav class="menu anim" role="navigation">
                 <ul class="list-inline list-unstyled menu__list">
+
+                    <?php
+                        foreach ($categories as $category) {
+                    ?>        
+
                     <li class="menu__item">
                         <input id="cat1" class="menu__input" type="checkbox">
-                        <label for="cat1"><i class="ico ico-arrow pull-left"></i>Развлечения</label>
+                        <a href="/cat/<?php echo $category->name; ?>"><label for="cat1"><i class="ico ico-arrow pull-left"></i><?php echo $category->name; ?></label></a>
                     </li>
+                    <?php
+                        }
+                    ?>
+                    <!--
                     <li class="menu__item">
                         <input id="cat2" class="menu__input" type="checkbox" checked>
                         <label for="cat2"><i class="ico ico-arrow pull-left"></i>Кафе/Рестораны</label>
@@ -43,6 +52,7 @@
                         <input id="cat10" class="menu__input" type="checkbox">
                         <label for="cat10"><i class="ico ico-arrow pull-left"></i>Туризм</label>
                     </li>
+                    -->
                 </ul>
             </nav>
         </div>

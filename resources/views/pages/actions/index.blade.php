@@ -52,13 +52,13 @@
                 <strong><?php echo $brand; ?></strong>
             </div>
         </div>
-
+        
         <div class="col-xs-24 col-sm-6">
             <a role="link" href="/show" class="content-block__heading">
                 <h2><?php echo $action->name; ?></h2>
             </a>
             <p class="content-block__introtext"><?php echo $action->text; ?></p>
-            <p class="content-block__date">Срок проведения: <?php echo $action->active_from; ?>-<?php echo $action->active_to; ?></p>
+            <p class="content-block__date">Срок проведения: <?php echo Carbon\Carbon::parse($action->active_from)->format('d.m.Y'); ?> - <?php echo Carbon\Carbon::parse($action->active_to)->format('d.m.Y'); ?></p>
             <ul class="content-block__list list-unstyled list-inline hidden-xs">
                 <?php
                     foreach ($action_tag as $action_tag_item) {
