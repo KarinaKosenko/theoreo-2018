@@ -13,6 +13,8 @@
 
 Route::get('/', 'IndexController@index');
 
+Route::get('/cat/{id}', 'CategoryController@show_category_page');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

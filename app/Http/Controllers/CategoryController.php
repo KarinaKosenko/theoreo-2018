@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class IndexController extends Controller
+class CategoryController extends Controller
 {
-    public function index()
+    public function show_category_page (Request $request, $id)
     {
-        $actions = DB::table('actions')->get();
-        
+        $actions_id = DB::table('action_category')->where('category_id', $id)->value('action_id');
+
+        $actions_id = [$actions_id];
+        foreach ($actions_id as $id) {
+            $actions = DB::table('actions')->where('id', $id)->get();
+        }
+
         $action_tag = DB::table('action_tag')->get();
 
         $tags = DB::table('tags')->get();
