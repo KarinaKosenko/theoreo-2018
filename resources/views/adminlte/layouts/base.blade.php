@@ -19,6 +19,12 @@
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/skins/skin-blue.min.css') }}">
+
+  <!--  Croppie  -->
+  <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
+  <script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
+  <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
+  <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,6 +36,7 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
 </head>
  
 <body class="hold-transition skin-blue sidebar-mini">
@@ -48,7 +55,7 @@
   @show
 
   @section('bottom_scripts')
-      <script src="js/app.js"></script> 
+     <script src="{{ asset('js/app.js') }}""></script> 
   @show
 
   @section('control-sidebar')
