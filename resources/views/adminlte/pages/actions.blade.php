@@ -37,7 +37,7 @@
                   <td>{{ \Carbon\Carbon::parse($action->active_from)->format('d.m.Y') ?? '' }}</td>
                   <td>{{ \Carbon\Carbon::parse($action->active_to)->format('d.m.Y H:i') ?? '' }}</td>
                   <td>{{ $action->text ?? '' }}</td>
-                  <td><img src="/image/fit/170/135/{{$action->upload->path ?? ''}}.jpg" alt="image"></td>
+                  <td><img src="{{ asset('/storage/' . $action->upload->path) }}" style="width:150px; height:auto; background-size:cover;" alt="image"></td>
                   <td>{{ $action->status ?? '' }}</td>
                   <td>{{ $action->links ?? '' }}</td>
                   <td>{{ $action->type ?? '' }}</td>
@@ -59,27 +59,27 @@
 </section> 
 
 @section('extra-js')
-   @parent
-    <!-- DataTables -->
-    <script src="{{ asset('adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-    <!-- SlimScroll -->
-    <script src="{{ asset('adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-    <!-- FastClick -->
-    <script src="{{ asset('adminlte/bower_components/fastclick/lib/fastclick.js') }}"></script>
-    <!-- page script -->
-    <script>
-      $(function () {
-        $('#example1').DataTable()
-        $('#example2').DataTable({
-          'paging'      : true,
-          'lengthChange': false,
-          'searching'   : false,
-          'ordering'    : true,
-          'info'        : true,
-          'autoWidth'   : false
-        })
+  @parent
+  <!-- DataTables -->
+  <script src="{{ asset('adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+  <!-- SlimScroll -->
+  <script src="{{ asset('adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+  <!-- FastClick -->
+  <script src="{{ asset('adminlte/bower_components/fastclick/lib/fastclick.js') }}"></script>
+  <!-- page script -->
+  <script>
+    $(function () {
+      $('#example1').DataTable()
+      $('#example2').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
       })
-    </script>
-  @endsection
+    })
+  </script>
+@endsection
   

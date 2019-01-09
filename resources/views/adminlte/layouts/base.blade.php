@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/skins/skin-blue.min.css') }}">
-
+  
   <!--  Croppie  -->
   <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
   <script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
@@ -70,6 +70,7 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
   @show
+  
   </div>
 </body>
 </html>

@@ -12,14 +12,14 @@ use App\Models\Tag;
 use App\Models\ActionCategory;
 use App\Models\ActionTag;
 
+
 class ActionController extends Controller
 {
 	// добавить авторизацию и валидацию
 
     public function index() 
     {
-    	
-    	$actions = Action::orderby('id', 'DESC')
+       	$actions = Action::orderby('id', 'DESC')
     			->get();
    
     	return view('adminlte.layouts.primary', [
@@ -34,15 +34,23 @@ class ActionController extends Controller
      *
      */
     public function create()
-    {   
+    {  
+        $image = session('image');
+        $image_src = session('image_src');
+        if ($image) {
+            $image_id = $image->id;
+            $image_path = $image->path;
+        }
         return view('adminlte.layouts.primary', [
             'page' => 'adminlte.parts.action_create',
             'h1' => 'Добавление акции',
             'categories' => Category::all(),
             'brands' => Brand::all(),
             'cities' => City::all(),
-            'tags' => Tag::all()
-            
+            'tags' => Tag::all(),
+            'image_id' => $image_id ?? '',
+            'image_path' => $image_path ?? '',
+            'image_src' => $image_src ?? ''
         ]); 
     }
 
@@ -52,7 +60,10 @@ class ActionController extends Controller
      */
     public function store(Request $request)
     {	
-    	
+        $image_src = session('image_src');
+
+        // Сохраняем акцию в базу
+
         $action = Action::create([
         	'name' => $request->name,
         	'brand_id' => $request->brand,
@@ -60,7 +71,7 @@ class ActionController extends Controller
         	'active_from' => $request->active_from,
         	'active_to' => $request->active_to,
         	'text' => $request->text,
-        	'upload_id' => '2', // пока заглушка
+        	'upload_id' => $request->image_id,  
         	'status' => 'approved',
         	'links' => $request->links,
         	'type' => $request->type
@@ -78,7 +89,6 @@ class ActionController extends Controller
         	]);
         }
 
-
         // Сохраняем в таблицу action_tag
 
         $tags_id = $request->tags;
@@ -91,13 +101,23 @@ class ActionController extends Controller
         }
 
         return redirect()->route('admin.actions');
-      
     }
     
 
     public function edit($id = null)
     {
+         return view('adminlte.layouts.primary', [
+            'page' => 'adminlte.parts.action_edit',
+            'h1' => 'Редактирование акции',
+            'categories' => Category::all(),
+            'brands' => Brand::all(),
+            'cities' => City::all(),
+            'tags' => Tag::all(),
+            'image_id' => $image_id ?? '',
+            'image_path' => $image_path ?? '',
+            'image_src' => $image_src ?? ''
 
+        ]); 
     }
 
     public function update($id = null)
