@@ -13,7 +13,7 @@
             <!-- Tab panes -->
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane fade in active" id="home">
-                <form action="{{ route('admin.actions.store')}}" role="form"  method="post" enctype="multipart/form-data">
+                <form action="" role="form"  method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                       
                   <div class="box-body">
@@ -21,19 +21,19 @@
                       <label>Бренд *</label>
                       <select class="form-control" name="brand">
                         @foreach ($brands as $brand)
-                          <option name="brand" value="{{ $brand->id }}"> {{ $brand->name ?? '' }} </option>
+                          <option name="brand" value="{{ $brand->id }}" {{ $action->brand_id == $brand->id ? 'selected' : '' }}> {{ $brand->name ?? '' }} </option>
                         @endforeach
                       </select>
                     </div>
                     <div class="form-group">
                       <label>Название акции *</label>
-                      <input type="text" class="form-control" name="name" placeholder="" value="{{ old('name', '') }}">
+                      <input type="text" class="form-control" name="name" placeholder="" value="{{ $action->name ?? '' }}">
                     </div>
                     <div class="form-group">
                       <label>Основное изображение</label><br>
                       @switch($image_src)
                         @case('this_img')
-                          <img src="{{ asset('storage/uploads/no_image.png') }}" alt="image">
+                          <img src="{{ asset('storage/'.$action->upload->path) }}" alt="image" style="width:300px; height:auto;">
                           @break
                         @case('brand_img')
                           <img src="{{ asset('storage/'.$image_path) }}" alt="image" style="width:300px; height:auto;">
@@ -50,36 +50,36 @@
 
                       <input type="hidden" name="image_id" value="{{ $image_id }}">
 
-                       <a href="#image"><button type="button" class="btn btn-default">Редактировать</button></a>
+                      <a href="#image"><button type="button" class="btn btn-default">Редактировать</button></a>
                     </div>
                     <div class="form-group">
                       <label>Описание акции *</label>
-                      <textarea class="form-control" name="text" rows="3">{{ old('text', '') }}</textarea>
+                      <textarea class="form-control" name="text" rows="3">{{ $action->text ?? '' }}</textarea>
                     </div>
                     <div class="form-group">
                       <label>Ссылка на сайт</label>
-                      <input type="text" class="form-control" name="links" placeholder="" value="{{ old('links', '') }}">
+                      <input type="text" class="form-control" name="links" placeholder="" value="{{ $action->links ?? '' }}">
                     </div>
                     <div class="form-group">
-                      <label>Дата начала акции</label>
-                      <input type="date" id="" name="active_from" class="form-control" value="{{ old('active_from', '') }}">
+                      <label>Дата начала акции</label> 
+                      <input type="date" id="" name="active_from" class="form-control" value="{{ \Carbon\Carbon::parse($action->active_from)->format('Y-m-d') ?? '' }}">
                     </div>
                     <div class="form-group">
                       <label>Дата окончания акции</label>
-                      <input type="date" id="" name="active_to" class="form-control" value="{{ old('active_to', '') }}">
+                      <input type="date" id="" name="active_to" class="form-control" value="{{ \Carbon\Carbon::parse($action->active_to)->format('Y-m-d') ?? '' }}">
                     </div>
                     <div class="form-group">
                       <label>Вид акции *</label>
                       <select class="form-control" name="type">
-                        <option value="stock" name="type">Stock</option>
-                        <option value="discount" name="type">Discount</option>
+                        <option value="stock" name="type" {{$action->type == "stock" ? 'selected' : '' }}>Stock</option>
+                        <option value="discount" name="type" {{ $action->type == "discount" ? 'selected' : '' }} >Discount</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label>Категория *</label>
                       <select multiple class="form-control" name="categories[]">
                         @foreach ($categories as $category)
-                          <option name="categories[]" value="{{ $category->id }}">{{ $category->name ?? '' }}</option>
+                          <option name="categories[]" value="{{ $category->id }}" {{ in_array($category->id, $actionCategoryArray) ? 'selected' : '' }} >{{ $category->name ?? '' }}</option>
                         @endforeach
                       </select>
                     </div>
@@ -87,7 +87,7 @@
                       <label>Тэги *</label>
                       <select multiple class="form-control" name="tags[]">
                         @foreach ($tags as $tag)
-                          <option name="tags[]" value="{{ $tag->id }}">{{ $tag->name ?? '' }}</option>
+                          <option name="tags[]" value="{{ $tag->id }}" {{ in_array($tag->id, $actionTagArray) ? 'selected' : ''}} >{{ $tag->name ?? '' }}</option>
                         @endforeach
                       </select>
                     </div>
@@ -95,7 +95,7 @@
                       <label>Город проведения</label>
                       <select class="form-control" name="city">
                         @foreach ($cities as $city)
-                          <option name="city" value="{{ $city->id }}">{{ $city->name ?? '' }}</option>
+                          <option name="city" value="{{ $city->id }}" {{ $action->city_id == $city->id ? 'selected' : '' }} >{{ $city->name ?? '' }}</option>
                         @endforeach
                       </select>
                     </div>

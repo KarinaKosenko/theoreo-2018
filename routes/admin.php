@@ -18,7 +18,7 @@ Route::get('actions', 'Admin\ActionController@index')->name('admin.actions');
 Route::get('actions/create', 'Admin\ActionController@create')->name('admin.actions.create');
 Route::post('actions/create', 'Admin\ActionController@store')->name('admin.actions.store');
 Route::get('actions/edit/{id}', 'Admin\ActionController@edit');
-Route::post('actions/edit/{id}', 'Admin\ActionController@update');
+Route::post('actions/edit/{id}', 'Admin\ActionController@update')->name('admin.actions.update');
 Route::get('actions/delete/{id}', 'Admin\ActionController@delete');
 
 Route::post('image/upload', 'ImageController@imageDbSave')->name('image.upload');

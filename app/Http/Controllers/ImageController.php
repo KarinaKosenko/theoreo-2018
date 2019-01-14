@@ -82,7 +82,7 @@ class ImageController extends Controller
 		else {
 			$image = '';
 		}
-		 
-		return redirect()->action('Admin\ActionController@store')->with(['image'=> $image, 'image_src'=> $image_src]);
+		
+		return redirect()->back()->with(['image'=> $image, 'image_src'=> $image_src]);
 	}
 }
