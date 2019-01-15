@@ -31,7 +31,8 @@ class CategoryController extends Controller
             [
             'actions' => $actions,
             'action_tag' => $action_tag, 
-            'tags' => $tags, 'brands' => $brands, 
+            'tags' => $tags,
+            'brands' => $brands, 
             'categories' => $categories,
             'cities'=> $cities
             ]);

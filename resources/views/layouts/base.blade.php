@@ -17,18 +17,18 @@
     <meta property="og:image" content="/theme/images/icon/share.png" />
     <meta property="og:description" content="Описание сайта" />
 
-    <link rel="apple-touch-icon" sizes="60x60" href="img/icon/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="img/icon/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="img/icon/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="img/icon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ URL::asset('img/icon/apple-touch-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ URL::asset('img/icon/apple-touch-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ URL::asset('img/icon/apple-touch-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ URL::asset('img/icon/apple-touch-icon-152x152.png') }}">
 
-    <link rel="shortcut icon" href="img/icon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ URL::asset('img/icon/favicon.ico') }}" type="image/x-icon">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/main.min.css">
-    <link rel="stylesheet" href="js/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="js/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/main.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('js/owl-carousel/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('js/owl-carousel/owl.theme.css') }}">
     @yield ('head_styles')
 </head>
 
@@ -61,8 +61,8 @@
         window.jQuery || document.write('jquery-1.11.3.min.js');
 
     </script>
-    <script src="js/plugins.min.js"></script>
-    <script src="js/main.min.js"></script>
+    <script src="{{ URL::asset('js/plugins.min.js') }}"></script>
+    <script src="{{ URL::asset('js/main.min.js') }}"></script>
 
 </body>
 

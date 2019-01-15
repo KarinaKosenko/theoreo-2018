@@ -44,7 +44,7 @@
             <div class="sidebar__item">
                 <a href="offer.html" title="Скидка 20% на все средства по уходу за волосами Gliss Kur">
                     <div class="sidebar__img">
-                        <img src="img/temp/temp_photo-1.jpg" alt="" class="img-responsive">
+                        <img src="{{ URL::asset('img/temp/temp_photo-1.jpg') }}" alt="" class="img-responsive">
                     </div>
                 </a>
             </div>
