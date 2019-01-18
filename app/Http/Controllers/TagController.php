@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
-    public function show_actions_by_category (Request $request, $id)
+    public function show_actions_by_tag (Request $request, $tag_name)
     {
-        $actions_id = DB::table('action_category')->where('category_id', $id)->value('action_id');
+        $tag_id = DB::table('tags')->where('name', $tag_name)->value('id');
+
+        $actions_id = DB::table('action_tag')->where('tag_id', $tag_id)->pluck('action_id');
 
         $actions_id = [$actions_id];
 
@@ -37,6 +39,6 @@ class CategoryController extends Controller
             'categories' => $categories,
             'cities'=> $cities
             ]);
-
+        
     }
 }

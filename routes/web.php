@@ -13,7 +13,11 @@
 
 Route::get('/', 'IndexController@index');
 
-Route::get('/cat/{id}', 'CategoryController@show_category_page');
+Route::get('/cat/{id}', 'CategoryController@show_actions_by_category');
+
+Route::get('/tag/{tag_name}', 'TagController@show_actions_by_tag');
+
+Route::get('/brand/{brand_name}', 'BrandController@show_actions_by_brand');
 
 Auth::routes();
 

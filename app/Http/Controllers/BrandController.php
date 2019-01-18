@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+class BrandController extends Controller
 {
-    public function show_actions_by_category (Request $request, $id)
+    public function show_actions_by_brand (Request $request, $brand_name)
     {
-        $actions_id = DB::table('action_category')->where('category_id', $id)->value('action_id');
+        $brand_id = DB::table('brands')->where('name', $brand_name)->value('id');
+
+        $actions_id = DB::table('actions')->where('brand_id', $brand_id)->pluck('id');
 
         $actions_id = [$actions_id];
 
@@ -37,6 +39,6 @@ class CategoryController extends Controller
             'categories' => $categories,
             'cities'=> $cities
             ]);
-
+        
     }
 }
