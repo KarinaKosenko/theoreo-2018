@@ -19,7 +19,11 @@
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/skins/skin-blue.min.css') }}">
-  
+  <!-- Extra styles -->
+  <link rel="stylesheet" href="{{ asset('css/extra-style.css') }}">
+  <!-- Select2 styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
+
   <!--  Croppie  -->
   <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
   <script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
@@ -69,6 +73,8 @@
     <script src="{{ asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
   @show
   
   </div>

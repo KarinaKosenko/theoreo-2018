@@ -37,7 +37,7 @@
                   <td>{{ \Carbon\Carbon::parse($action->active_from)->format('d.m.Y') ?? '' }}</td>
                   <td>{{ \Carbon\Carbon::parse($action->active_to)->format('d.m.Y H:i') ?? '' }}</td>
                   <td>{{ $action->text ?? '' }}</td>
-                  <td><img src="{{ asset('/storage/' . $action->upload->path) }}" style="width:150px; height:auto; background-size:cover;" alt="image"></td>
+                  <td><div class="img-wrapper-min"><img src="{{ asset('/storage/' . $action->upload->path) }}" alt="image"></div></td>
                   <td>{{ $action->status ?? '' }}</td>
                   <td>{{ $action->links ?? '' }}</td>
                   <td>{{ $action->type ?? '' }}</td>
