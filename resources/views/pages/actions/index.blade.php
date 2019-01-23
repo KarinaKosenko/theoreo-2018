@@ -49,7 +49,7 @@
                 </a>
             </div>
             <div class="sidebar__item">
-                <strong><a href="/brand/<?php echo $brand; ?>"><?php echo $brand; ?></a></strong>
+                <strong><a href="{{ route ('brand', ['brand_name' => $brand])}}"><?php echo $brand; ?></a></strong>
             </div>
         </div>
         
@@ -66,7 +66,7 @@
                         {
                         $tag_name = DB::table('tags')->where('id', $action_tag_item->tag_id)->value('name');
                 ?>
-                    <li class="content-block__item"><a href="/tag/<?php echo $tag_name; ?>" class="btn btn-default content-block__tag"><?php echo $tag_name; }?></a></li><?php } ?>
+                    <li class="content-block__item"><a href="{{route('tag', ['tag_name' => $tag_name])}}" class="btn btn-default content-block__tag"><?php echo $tag_name; }?></a></li><?php } ?>
             </ul>
             <div class="content-block__footer clearfix">
                 <div class="content-block__tag--wrapper pull-left">

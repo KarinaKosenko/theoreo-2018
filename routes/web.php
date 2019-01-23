@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', 'IndexController@index');
+Route::get('/', 'ActionsController@index')->name('index');
 
-Route::get('/cat/{id}', 'CategoryController@show_actions_by_category');
+Route::get('/cat/{id}', 'ActionsController@show_actions_by_category')->name('category');
 
-Route::get('/tag/{tag_name}', 'TagController@show_actions_by_tag');
+Route::get('/tag/{tag_name}', 'ActionsController@show_actions_by_tag')->name('tag');
 
-Route::get('/brand/{brand_name}', 'BrandController@show_actions_by_brand');
+Route::get('/brand/{brand_name}', 'ActionsController@show_actions_by_brand')->name('brand');
 
 Auth::routes();
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class City extends Model
 {
     protected $guarded = ['id', 'created_at', 'updated_at'];
-    protected $fillable = ['name'];
+    //protected $fillable = ['name'];
     
     public function brands()
     {

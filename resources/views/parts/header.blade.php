@@ -21,7 +21,7 @@
                 <!-- LOGO -->
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-10 js-search-hide">
                     <h1 class="logo anim">
-                        <a role="link" href="\" class="logo__link">
+                        <a role="link" href="{{ route ('index') }}" class="logo__link">
                             <img src="{{ URL::asset('img/logo.png') }}" alt="Froggle" class="logo_img">
                         </a>
                     </h1>
