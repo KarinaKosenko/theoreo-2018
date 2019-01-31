@@ -27,15 +27,7 @@
     </div>
 </div>
 
-<?php
-
-   foreach ($actions as $action) {
-    $brand = DB::table('brands')->where('id', $action->brand_id)->value('name');
-?>
-         
-         
-    
-
+@forelse ($actions as $action)
 
 <div class="row-fluid">
     <article role="article" class="content-block clearfix">
@@ -49,15 +41,15 @@
                 </a>
             </div>
             <div class="sidebar__item">
-                <strong><a href="{{ route ('brand', ['brand_name' => $brand])}}"><?php echo $brand; ?></a></strong>
+                <strong><a href="{{ route ('brand', ['brand_name' => $action->id])}}">{{ $action->brand->name ?? '' }}</a></strong>
             </div>
         </div>
         
         <div class="col-xs-24 col-sm-6">
             <a role="link" href="/show" class="content-block__heading">
-                <h2><?php echo $action->name; ?></h2>
+                <h2>{{ $action->name }}</h2>
             </a>
-            <p class="content-block__introtext"><?php echo $action->text; ?></p>
+            <p class="content-block__introtext">{{ $action->text }}</p>
             <p class="content-block__date">Срок проведения: <?php echo Carbon\Carbon::parse($action->active_from)->format('d.m.Y'); ?> - <?php echo Carbon\Carbon::parse($action->active_to)->format('d.m.Y'); ?></p>
             <ul class="content-block__list list-unstyled list-inline hidden-xs">
                 <?php
@@ -103,9 +95,12 @@
         </div>
     </article>
 </div>
-<?php
-}
-?>
+
+@empty
+
+   Нет акций
+
+@endforelse
 
 @endsection
 
