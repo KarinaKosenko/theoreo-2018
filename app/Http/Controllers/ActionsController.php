@@ -27,13 +27,14 @@ class ActionsController extends Controller
             [
             'actions' => $actions,
             'action_tag' => $action_tag, 
-            'tags' => $tags, 'brands' => $brands, 
+            'tags' => $tags, 
+            'brands' => $brands, 
             'categories' => $categories,
             'cities'=> $cities
             ]);
     }
 
-    public function show_actions_by_brand (Request $request, $brand_name)
+    public function show_actions_by_brand (Request $request, $brand_id)
     {
         $brand_id = DB::table('brands')->where('name', $brand_name)->value('id');
 

@@ -41,7 +41,8 @@
                 </a>
             </div>
             <div class="sidebar__item">
-                <strong><a href="{{ route ('brand', ['brand_name' => $action->id])}}">{{ $action->brand->name ?? '' }}</a></strong>
+                <?php $brand_name = App\Models\Brand::where('id', '=', $action->brand_id)->first(); ?>
+                <strong><a href="{{ route ('brand', ['brand_id' => $action->brand_id])}}">{{ $brand_name->name }}</a></strong>
             </div>
         </div>
         
@@ -50,7 +51,7 @@
                 <h2>{{ $action->name }}</h2>
             </a>
             <p class="content-block__introtext">{{ $action->text }}</p>
-            <p class="content-block__date">Срок проведения: <?php echo Carbon\Carbon::parse($action->active_from)->format('d.m.Y'); ?> - <?php echo Carbon\Carbon::parse($action->active_to)->format('d.m.Y'); ?></p>
+            <p class="content-block__date">Срок проведения: {{ Carbon\Carbon::parse($action->active_from)->format('d.m.Y') }} - {{ Carbon\Carbon::parse($action->active_to)->format('d.m.Y') }}</p>
             <ul class="content-block__list list-unstyled list-inline hidden-xs">
                 <?php
                     foreach ($action_tag as $action_tag_item) {
