@@ -23,7 +23,7 @@ Route::prefix('actions')->group(function() {
 	Route::get('/delete/{id}', 'Admin\ActionController@delete')->name('admin.actions.delete');
 	Route::get('/create/image-crop', 'ImageController@imageCrop')->name('image.crop-show');
 	Route::post('/create/image-crop', 'ImageController@imageCropPost')->name('image.crop');
+	Route::post('/image/upload', 'ImageController@imageDbSave')->name('image.upload');
 });
 
-Route::post('image/upload', 'ImageController@imageDbSave')->name('image.upload');
 

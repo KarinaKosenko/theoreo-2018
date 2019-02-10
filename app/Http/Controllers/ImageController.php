@@ -17,7 +17,7 @@ class ImageController extends Controller
     public function imageCrop()
     {
         return view('adminlte.layouts.primary', [
-    		'page' => 'adminlte.parts.action_create',
+    		'page' => 'adminlte.pages.action_create',
     		'h1' => '',
     		
     	]);
@@ -30,7 +30,7 @@ class ImageController extends Controller
          // не работает ниже     
 
         list($data) = explode(';', $data);
-        list(, $data)      = explode(',', $data);
+       // list(, $data) = explode(',', $data);
 
         $data = base64_decode($data);
         $image_name= time().'.png';
@@ -42,10 +42,11 @@ class ImageController extends Controller
  
 
     public function imageDbSave(Request $request)
-    {
+    { echo 111;
     	$image_src = $request->image_src;
 
     	if ($image_src == 'brand_img') {
+    	
     		// нужно получить значение тега select ("Бренд") из вкладки "Основное"" и передать его во вкладку "Изображение" без POST-запроса
     	} 
 
@@ -80,6 +81,7 @@ class ImageController extends Controller
 		}
 
 		else {
+
 			$image = '';
 		}
 		

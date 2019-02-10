@@ -15,7 +15,7 @@
               <a href="#">
                 <div class="pull-left">
                   <!-- User Image -->
-                  <img src="adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                  <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
                 </div>
                 <h4>
                   Support Team

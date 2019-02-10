@@ -36,10 +36,10 @@
       <div class="col-md-4 upload-input">
         <div class="form-group">
           <label>Выберите изображение:</label>
-          <input type="file" name="image" id="upload">
+          <input id="sortpicture" type="file" name="image">
         </div>
         <div class="form-group">
-          <button class="btn btn-success upload-result" type="submit">Применить</button>
+          <button id="upload" class="btn btn-success upload-result" type="button">Применить</button>
         </div>
       </div>
       <div class="col-md-4" style="">
@@ -48,3 +48,35 @@
     </div>
   </div>
 </form>
+
+@section('extra-js')
+  @parent
+  
+  <script>
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+    $('#upload').on('click', function() {
+    var file_data = $('#sortpicture').prop('files')[0];
+    var form_data = new FormData();
+    form_data.append('file', file_data);
+    form_data.append('img_src', $('input[name=image_src]'));
+    alert(form_data);
+    console.log(file_data);
+    $.ajax({
+        url: '{{ route('image.upload') }}',
+        dataType: 'text',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function(php_script_response){
+          alert(php_script_response);
+        }
+     });
+    });
+  </script>
+@endsection
