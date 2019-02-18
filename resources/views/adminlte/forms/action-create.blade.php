@@ -18,10 +18,10 @@
       <label>Основное изображение</label><br>
         <div class="img-wrapper">
           @isset($image)
-            <img src="{{ asset('storage/'.$image->path) }}" alt="image">
+            <img class="action-img" src="{{ asset('storage/'.$image->path) }}" alt="image">
           @endisset
           @empty($image)
-            <img src="{{ asset('storage/uploads/no_image.png') }}" alt="image">
+            <img class="action-img" src="{{ asset('storage/uploads/no_image.png') }}" alt="image">
           @endempty
         </div>
       <input type="hidden" name="image_id" value="{{ $image->id ?? '1' }}">

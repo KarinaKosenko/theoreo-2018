@@ -58,25 +58,42 @@
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
     });
+    
     $('#upload').on('click', function() {
-    var file_data = $('#sortpicture').prop('files')[0];
-    var form_data = new FormData();
-    form_data.append('file', file_data);
-    form_data.append('img_src', $('input[name=image_src]'));
-    alert(form_data);
-    console.log(file_data);
-    $.ajax({
-        url: '{{ route('image.upload') }}',
-        dataType: 'text',
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_data,
-        type: 'post',
-        success: function(php_script_response){
-          alert(php_script_response);
-        }
-     });
+
+      var file_data = $('#sortpicture').prop('files')[0];
+      var form_data = new FormData();
+      form_data.append('image', file_data);
+      form_data.append('image_src', $('input[name=image_src]:checked').val());
+      form_data.append('link', $('input[name=image_internet_link]').val());
+      alert(form_data);
+      console.log(file_data);
+      $.ajax({
+          url: '{{ route('image.upload') }}',
+          dataType: 'text',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data,
+          type: 'post',
+         
+          success: function(data){
+           
+            var data_obj = JSON.parse(data);
+          
+            var path = data_obj.data.image.path;
+
+            var src = "asset('storage/"+path+"')";
+
+            console.log(src);     
+
+            $('.nav-pills a[href="#home"]').tab('show');
+            $('.action-img').attr("src", ""{{"+ src + "}}"");
+
+          }
+      });
     });
+    
   </script>
 @endsection
+

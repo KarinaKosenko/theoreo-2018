@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\Upload;
  
 
@@ -42,9 +43,9 @@ class ImageController extends Controller
  
 
     public function imageDbSave(Request $request)
-    { echo 111;
+    { 
     	$image_src = $request->image_src;
-
+    	$link = $request->link;
     	if ($image_src == 'brand_img') {
     	
     		// нужно получить значение тега select ("Бренд") из вкладки "Основное"" и передать его во вкладку "Изображение" без POST-запроса
@@ -61,9 +62,8 @@ class ImageController extends Controller
 		 	$image = Upload::create($input);
 		 }
 
-		 else if ($image_src == 'internet_img' && isset($request->image_internet_link)) {
+		 else if ($image_src == 'internet_img') {
 
-	    	$link = $request->image_internet_link;
 			$file = file_get_contents($link);
 			$file_name = time().".png";
 			file_put_contents("storage/uploads/".$file_name, $file);
@@ -84,7 +84,8 @@ class ImageController extends Controller
 
 			$image = '';
 		}
-		
-		return redirect()->back()->with(['image'=> $image, 'image_src'=> $image_src]);
+	
+		return response()->json(['success' => true, 'data' => ['image'=> $image, 'image_src'=> $image_src]]);
+		//return redirect()->back()->with(['image'=> $image, 'image_src'=> $image_src]);
 	}
 }
