@@ -14,7 +14,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Управление акциями</span></a></li>
+        <li class="active"><a href="{{ route('admin.actions')}}"><i class="fa fa-link"></i> <span>Управление акциями</span></a></li>
         <li><a href="#"><i class="fa fa-link"></i> <span>Управление брендами</span></a></li>
         <li><a href="#"><i class="fa fa-link"></i> <span>Модерация контента</span></a></li>
         <li><a href="#"><i class="fa fa-link"></i> <span>Управление пользователями</span></a></li>
