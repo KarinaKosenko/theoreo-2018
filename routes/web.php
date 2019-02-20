@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.actions.index');
-});
+Route::get('/', 'ActionsController@index')->name('index');
+
+Route::get('/cat/{category_id}', 'ActionsController@show_actions_by_category')->name('category');
+
+Route::get('/tag/{tag_id}', 'ActionsController@show_actions_by_tag')->name('tag');
+
+Route::get('/brand/{brand_id}', 'ActionsController@show_actions_by_brand')->name('brand');
 
 Auth::routes();
 
