@@ -41,7 +41,7 @@
                 </a>
             </div>
             <div class="sidebar__item">
-                <?php $brand_name = App\Models\Brand::where('id', '=', $action->brand_id)->first(); ?>
+            <?php $brand_name = App\Models\Brand::where('id', '=', $action->brand_id)->first(); ?>
                 <strong><a href="{{ route ('brand', ['brand_id' => $action->brand_id])}}">{{ $brand_name->name }}</a></strong>
             </div>
         </div>
@@ -53,13 +53,9 @@
             <p class="content-block__introtext">{{ $action->text }}</p>
             <p class="content-block__date">Срок проведения: {{ Carbon\Carbon::parse($action->active_from)->format('d.m.Y') }} - {{ Carbon\Carbon::parse($action->active_to)->format('d.m.Y') }}</p>
             <ul class="content-block__list list-unstyled list-inline hidden-xs">
-                <?php
-                    foreach ($action_tag as $action_tag_item) {
-                        if ($action_tag_item->action_id == $action->id)
-                        {
-                        $tag_name = DB::table('tags')->where('id', $action_tag_item->tag_id)->value('name');
-                ?>
-                    <li class="content-block__item"><a href="{{route('tag', ['tag_name' => $tag_name])}}" class="btn btn-default content-block__tag"><?php echo $tag_name; }?></a></li><?php } ?>
+                @foreach ($action->tags as $tag)
+                <li class="content-block__item"><a href="{{route('tag', ['tag_id' => $tag->id])}}" class="btn btn-default content-block__tag">{{ $tag->name }}</a></li>
+                @endforeach
             </ul>
             <div class="content-block__footer clearfix">
                 <div class="content-block__tag--wrapper pull-left">

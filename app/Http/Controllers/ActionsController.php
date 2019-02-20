@@ -13,7 +13,7 @@ class ActionsController extends Controller
     {
         $actions = Action::all();
         
-        $action_tag = DB::table('action_tag')->get();
+        $action_tag = Action::with('tags')->withCount('tags')->get();
 
         $tags = Tag::all();
 
@@ -36,17 +36,9 @@ class ActionsController extends Controller
 
     public function show_actions_by_brand (Request $request, $brand_id)
     {
-        $brand_id = DB::table('brands')->where('name', $brand_name)->value('id');
+        $actions = Action::where('brand_id', '=', $brand_id)->get();
 
-        $actions_id = DB::table('actions')->where('brand_id', $brand_id)->pluck('id');
-
-        $actions_id = [$actions_id];
-
-        foreach ($actions_id as $id) {
-            $actions = DB::table('actions')->where('id', $id)->get();
-        }
-
-        $action_tag = DB::table('action_tag')->get();
+        $action_tag = Action::with('tags')->withCount('tags')->get();
 
         $tags = Tag::all();
 
@@ -68,9 +60,9 @@ class ActionsController extends Controller
         
     }
 
-    public function show_actions_by_category (Request $request, $id)
+    public function show_actions_by_category (Request $request, $category_id)
     {
-        $actions_id = DB::table('action_category')->where('category_id', $id)->value('action_id');
+        $actions_id = DB::table('action_category')->where('category_id', $category_id)->value('action_id');
 
         $actions_id = [$actions_id];
 
@@ -78,7 +70,9 @@ class ActionsController extends Controller
             $actions = DB::table('actions')->where('id', $id)->get();
         }
 
-        $action_tag = DB::table('action_tag')->get();
+        //$actions = Category::with('actions')->withCount('actions')->where('id', '=', $category_id)->get();
+
+        $action_tag = Action::with('tags')->withCount('tags')->get();
 
         $tags = Tag::all();
 

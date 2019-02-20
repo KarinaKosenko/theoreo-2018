@@ -10,7 +10,7 @@
 
                     <li class="menu__item">
                         <input id="<?php echo $category->id; ?>" class="menu__input" type="checkbox">
-                        <a href="{{ route ('category', ['id' => $category->id])}}"><label for="cat1"><i class="ico ico-arrow pull-left"></i><?php echo $category->name; ?></label></a>
+                        <a href="{{ route ('category', ['category_id' => $category->id])}}"><label for="cat1"><i class="ico ico-arrow pull-left"></i><?php echo $category->name; ?></label></a>
                     </li>
                     <?php
                         }
