@@ -13,10 +13,22 @@
   <link rel="stylesheet" href="{{ asset('adminlte/bower_components/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('adminlte/bower_components/Ionicons/css/ionicons.min.css') }}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/skins/skin-blue.min.css') }}">
+  <!-- Extra styles -->
+  <link rel="stylesheet" href="{{ asset('css/extra-style.css') }}">
+  <!-- Select2 styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
+
+  <!--  Croppie  -->
+  <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
+  <script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
+  <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
+  <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,6 +40,7 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
 </head>
  
 <body class="hold-transition skin-blue sidebar-mini">
@@ -46,7 +59,7 @@
   @show
 
   @section('bottom_scripts')
-      <script src="js/app.js"></script> 
+     <script src="{{ asset('js/app.js') }}""></script> 
   @show
 
   @section('control-sidebar')
@@ -60,7 +73,10 @@
     <script src="{{ asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
   @show
-
+  
+  </div>
 </body>
 </html>
