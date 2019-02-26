@@ -29,4 +29,12 @@ class HomeController extends Controller
             'title' => 'Theoreo | Административная панель',
         ]);
     }
+    public function brands()
+    {
+        return view('adminlte.layouts.primary', [
+
+            'page' => 'adminlte.pages.brands',
+            'title' => 'Theoreo | Административная панель',
+        ]);
+    }
 }

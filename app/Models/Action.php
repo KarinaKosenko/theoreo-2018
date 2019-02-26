@@ -19,13 +19,18 @@ class Action extends Model
         return $this->belongsToMany('App\Models\Tag');
     }
     
-    public function uploads()
+    public function upload()
     {
         return $this->belongsTo('App\Models\Upload');
     }
     
-    public function cities()
+    public function city()
     {
         return $this->belongsTo('App\Models\City');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo('App\Models\Brand');
     }
 }

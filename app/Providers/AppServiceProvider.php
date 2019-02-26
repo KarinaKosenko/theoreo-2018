@@ -20,7 +20,9 @@ class AppServiceProvider extends ServiceProvider
             $view->with('auth', Auth::user());
         });
         
-        Schema::defaultStringLength(191); 
+        Schema::defaultStringLength(191);
+
+        include_once app_path("helpers.php");
     }
 
     /**
